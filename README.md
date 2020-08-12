@@ -31,3 +31,32 @@ For the copy/paste inclined:
 ```
 git clone https://github.com/tsali/broadcast.git && cd broadcast && chmod +x broadcast
 ```
+
+Example usage:
+
+```
+pi@retropi3:~$ broadcast
+
+Available Audio Sources:
+
+1)Microphone (Default is plughw:1,0)
+2)Local Music Directory (default is ~/music/*.mp3)
+3)Website/Stream/Specific file
+4)Cancel/Exit 
+
+Audio Source: 2
+Enter Frequency: 89.9
+Enter station ID#: 1234
+Enter station name: PiFM
+Enter additional radio text (replace spaces with _ or -): Test_Pi_FM_transmission
+
+Starting broadcast on 89.9, press CTRL+C to stop it
+
+Using stdin for audio input.
+Input: 44100 Hz, upsampling factor: 5.17
+2 channels, generating stereo multiplex.
+Created low-pass FIR filter for audio channels, with cutoff at 15700.0 Hz
+PI: 1234, PS: "PiFM".
+RT: "Test_Pi_FM_transmission"
+Starting to transmit on 89.9 MHz.
+```
