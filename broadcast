@@ -1,0 +1,77 @@
+#!/bin/bash
+#########################################################
+# Description: Simple pifmrds testing script	  	#
+# Author: Tsali // James Washington - Network Engineer	#
+# Date: 2020/08/11					#
+# Twitter: @tsali					#
+# Instagram: red_hens					#
+# OnlyFans: Tsali					#
+# Facebook: TsaliJames					#
+# Website: cultofjames.org				#
+#							#
+# ToDo: Make similar scripts for other RF technologies	#
+# 	and expand the selections to include them	#
+#	such as POCSAG/AM/Digital Voice etc..		#
+#########################################################
+
+#Microphone Source
+function microphone
+{
+	read -p 'Enter Frequency: ' FREQ
+	read -p 'Enter station ID#: ' ID
+	read -p 'Enter station name: ' STATION
+        read -p 'Enter additional radio text (replace spaces with _ or -): ' TEXT
+	echo ""
+	echo "Starting broadcast on "$FREQ", press CTRL+C to stop it"
+	echo ""
+	arecord -fS16_LE -r 44100 -Dplughw:1,0 -c 2 - | sudo pifmrds -freq $FREQ -pi $ID -ps $STATION -rt $TEXT -audio -
+	exit
+}
+
+#Local music folder source
+function local
+{
+	read -p 'Enter Frequency: ' FREQ
+        read -p 'Enter station ID#: ' ID
+        read -p 'Enter station name: ' STATION
+        read -p 'Enter additional radio text (replace spaces with _ or -): ' TEXT
+        echo ""
+        echo "Starting broadcast on "$FREQ", press CTRL+C to stop it"
+        echo ""
+	sox -t mp3 ~/music/*.mp3 -t wav -  | sudo pifmrds -freq $FREQ -pi $ID -ps $STATION -rt $TEXT -audio -
+	exit
+}
+
+#External link/Specific file source
+function link
+{
+        read -p 'Enter Frequency: ' FREQ
+	read -p 'Enter Link/File: ' LINK
+        read -p 'Enter station ID#: ' ID
+        read -p 'Enter station name: ' STATION
+        read -p 'Enter additional radio text (replace spaces with _ or -): ' TEXT
+        echo ""
+        echo "Starting broadcast on "$FREQ", press CTRL+C to stop it"
+        echo ""
+	sox -t mp3 $LINK -t wav -  | sudo pifmrds -freq $FREQ -pi $ID -ps $STATION -rt $TEXT -audio -
+	exit
+}
+
+# Main options selecting Audio source
+echo ""
+echo "Available Audio Sources:
+
+1)Microphone (Default is plughw:1,0)
+2)Local Music Directory (default is ~/music/*.mp3)
+3)Website/Stream/Specific file
+4)Cancel/Exit "
+echo ""
+read -p "Audio Source: " n
+case $n in
+    1) microphone;;
+    2) local;;
+    3) link;;
+    4) echo "";echo "Buhbye!";echo "";exit;;
+    *) echo ""
+echo "****Invalid option, please try again****" && ./broadcast;;
+esac
