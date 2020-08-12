@@ -1,14 +1,14 @@
 #########################################################
-# Description: Simple pifmrds testing script            #
-# Author: Tsali // James Washington - Network Engineer  #
-# Date: 2020/08/11                                      #
-# Twitter: @tsali                                       #
-# Instagram: red_hens                                   #
-# OnlyFans: Tsali                                       #
-# Facebook: TsaliJames                                  #
-# Website: cultofjames.org                              #
-#                                                       #
-# ToDo: Make similar scripts for other RF technologies  #
+ Description: Simple pifmrds testing script            
+ Author: Tsali // James Washington - Network Engineer  
+ Date: 2020/08/11                                      
+ Twitter: @tsali                                       
+ Instagram: red_hens                                   
+ OnlyFans: Tsali                                       
+ Facebook: TsaliJames                                  
+ Website: cultofjames.org                              
+                                                       
+ ToDo: Make similar scripts for other RF technologies  
 #########################################################
 
 This is a simple script that will allow you to quickly enter info to test broadcasting with PIFMRDS
